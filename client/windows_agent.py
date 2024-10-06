@@ -1,11 +1,10 @@
 import socket
-import threading
 import win32evtlog
 import time
 
 # Параметры сервера
-HOST = '192.168.0.106' # Стандартный loopback interface
-PORT = 65432        # Порт для прослушивания
+HOST = '192.168.0.106' 
+PORT = 65432        
 
 # Лог событий Windows
 system_eventlog = win32evtlog.OpenEventLog(None, 'System')
@@ -15,7 +14,6 @@ application_eventlog = win32evtlog.OpenEventLog(None, 'Applitcation')
 
 # Клиент TCP
 def client():
-    #print(type(events))
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         s.connect((HOST, PORT))
         while True:
